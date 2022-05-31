@@ -28,6 +28,7 @@ public class MundoInstruc extends World
     {
         Inst2 space=new Inst2();
         ins1 flechas=new ins1();
+        Inst3 botonX=new Inst3();
         if(m==null)
         {
         System.out.println("null");
@@ -40,5 +41,6 @@ public class MundoInstruc extends World
         
         addObject(flechas, getWidth()/2-300, getHeight()/2-100);
         addObject(space, getWidth()/2, getHeight()/2);
+        addObject(botonX, getWidth()/2+300, getHeight()/2-100);
     }
 }
