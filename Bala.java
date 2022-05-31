@@ -33,8 +33,20 @@ public class Bala extends Actor
         if(isTouching(Fantasma.class))
         {
             daño=true;
+        }else
+        {
+        
+            daño=false;
         }
         return daño;
+    }
+    public void atackk()
+    {
+        if(isTouching(Profe.class))
+        {
+            
+        }
+       
     }
     
     

@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Letrero extends Actor
+public class Letrero extends Item
 {
     Color color=Color.PINK;
     
@@ -18,6 +18,7 @@ public class Letrero extends Actor
        img.scale(300,100);
        setImage(img);
    }
+   
    public void setText(String text)
    {
        GreenfootImage img=getImage();

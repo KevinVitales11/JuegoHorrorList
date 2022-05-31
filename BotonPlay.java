@@ -6,14 +6,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class BotonPlay extends Actor
+public class BotonPlay extends Botones
 {
     
-    
-    /**
-     * Act - do whatever the BotonPlay wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+     
+
     
   
     

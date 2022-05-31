@@ -1,13 +1,12 @@
-import greenfoot.*; 
-import java.util.Random; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Fantasma here.
+ * Write a description of class Profe here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Fantasma extends Actor
+public class Profe extends Fantasma
 {
     private GreenfootImage img;
     private int movingCont=0;
@@ -30,7 +29,7 @@ public class Fantasma extends Actor
     public boolean bandera=true;
     public boolean bandera2=false;
     private boolean bandera3=false;
-    GreenfootSound pie=new GreenfootSound("C:/Users/MIRI/OneDrive/Escritorio/horrorList/sounds/grito.mp3");
+    GreenfootSound pie=new GreenfootSound("C:/Users/MIRI/OneDrive/Escritorio/horrorList/sounds/enojado.mp3");
    
     /**
      * Act - do whatever the Fantasma wants to do. This method is called whenever
@@ -39,14 +38,15 @@ public class Fantasma extends Actor
     public void act()
     {
          perseguir(); 
+         tocando();
     }
-    public Fantasma()
+    public Profe()
     {
         img=getImage();
         img.mirrorHorizontally();
         img.scale(img.getWidth()-250,img.getHeight()-250);
     }
-    public Fantasma(niño nini, vida vid,vida vid2,vida vid3)
+    public Profe(niño nini, vida vid,vida vid2,vida vid3)
     {
         
        
@@ -54,12 +54,14 @@ public class Fantasma extends Actor
         this.vidi3=vid3;
         this.nini=nini;
         this.vidi=vid;
+        
+        setImage("C:/Users/MIRI/OneDrive/Escritorio/horrorList/images/profe.png");
+        getImage().scale(getImage().getWidth()+40,getImage().getHeight()+50 );
         img=getImage();
-        img.mirrorHorizontally();
-        img.scale(img.getWidth()-250,img.getHeight()-250);
+        //img.scale(img.getWidth()-200,img.getHeight()-200);
         ObjFantx=nini.getX();
         ObjFanty=nini.getY();
-        
+        img.mirrorHorizontally();
         
     }
     public void perseguir()
@@ -77,7 +79,7 @@ public class Fantasma extends Actor
         {
                 
             repoduceOneTimeSound();
-            setLocation(ObjFantx+930+cont,ObjFanty);
+            setLocation(ObjFantx-930-cont,ObjFanty);
             if(getWorld().getObjects(vida.class)==null)
             {
                 Greenfoot.playSound("C:/Users/MIRI/OneDrive/Escritorio/horrorList/sounds/noo.mp3");
@@ -90,32 +92,38 @@ public class Fantasma extends Actor
             if(isTouching(niño.class)==true)
             { 
                toco();
-               nini.move(-130);
+               nini.move(+130);
                if(contDalay==1)
                {
                    getWorld().removeObject(vidi3); 
-                   nini.quejate();
-                   Greenfoot.delay(30);
+                   nini.quejate2();
+                   
                }else if(contDalay==2)
                {
                    getWorld().removeObject(vidi);
-                   nini.quejate();
-                   Greenfoot.delay(30);
+                   nini.quejate2();
+                   
                }else if(contDalay==3)
                {
                 
                 getWorld().removeObject(vidi2);
-                nini.quejate();
-                Greenfoot.delay(30);
-               }else
+                nini.quejate2();
+                
+               }else if(contDalay==4)
                {
                    Greenfoot.playSound("C:/Users/MIRI/OneDrive/Escritorio/horrorList/sounds/noo.mp3");
                    
                    Greenfoot.setWorld(esce);
                    getWorld().removeObject(nini);
+                  // getWorld().removeObject(this);
+               }else if(getWorld().getObjects(vida.class)==null)
+               {
+                  
+                   Greenfoot.playSound("C:/Users/MIRI/OneDrive/Escritorio/horrorList/sounds/noo.mp3");
+                   
+                   Greenfoot.setWorld(esce);
+                   getWorld().removeObject(nini);
                    getWorld().removeObject(this);
-                   
-                   
                    
                }
                 contDalay++; 
@@ -139,19 +147,12 @@ public class Fantasma extends Actor
     }
    
     
-    private int aleatorio()
-    {
-        Random dado=new Random();
-        int numero;
-        numero=dado.nextInt(100+10);
-    
-        return numero;
-    }
+   
     private void repoduceOneTimeSound()
     {
         if(bandera2==false)
         {
-            pie.setVolume(10);
+            pie.setVolume(100);
             pie.play();
             bandera2=true;
             
@@ -172,8 +173,15 @@ public class Fantasma extends Actor
                bandera2=false;
                ObjFantx=nini.getX();
     }
+    private void tocando()
+    {
+        if(isTouching(Bala.class))
+        {
+
+            toco();
+            
+        }
+    }
     
 
-   
-  
 }

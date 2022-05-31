@@ -7,7 +7,7 @@ import java.lang.Object;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Pizzarron extends Actor
+public class Pizzarron extends Item
 {
     GreenfootImage img;
     /**
