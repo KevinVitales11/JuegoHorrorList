@@ -1,17 +1,10 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;  
 
-/**
- * Write a description of class libro here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+
 public class libro extends Actor
 {
-    /**
-     * Act - do whatever the libro wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    
+     
     private GreenfootImage []imagesLibro;
     private GreenfootImage []imagesBarr;
     Points points;
@@ -23,20 +16,22 @@ public class libro extends Actor
     public boolean fin=false;
     public boolean finEnd=false;
     niño nini;
-    int time;
+    private int time;
+    
     public libro()
     {
         getImage().scale(30, 30);
         setLocation(800,800);
         
+        
        
     }
     public void act()
     {
+        
         apareceteAleatoriamente();
         restar();
         aumentaPuntos();
-        //coffe.setIM(cont2);
         
     }
     
@@ -79,45 +74,39 @@ public class libro extends Actor
     }
     private void Win()
     {
-    int cont=2;
     
-    getWorld().showText(""+cont, getWorld().getWidth()/2,getWorld().getHeight()/2);
+
     
-    
-        Greenfoot.delay(100);
         if(fin==true)
         {
             
             if(finEnd==true)
             {
+                
                 win ganar=new win();
                 Greenfoot.setWorld(ganar); 
+                getWorld().removeObjects(getWorld().getObjects(Music.class));
             }else
             {
-                
-                //Letrero leter=new Letrero("%d",cont);
-                
-                Level3 nivelFin=new Level3();
-                Greenfoot.setWorld(nivelFin);
+               
+               Level3 nivelFin=new Level3();
+               Greenfoot.setWorld(nivelFin);
                getWorld().removeObjects(getWorld().getObjects(Fantasma.class));
                getWorld().removeObjects(getWorld().getObjects(niño.class));
                getWorld().removeObjects(getWorld().getObjects(Points.class));
                getWorld().removeObjects(getWorld().getObjects(libro.class));
-              
+                             
             }
         }else
         {
          Level2 nivel=new Level2();
-         
-        
-        
-        //getWorld().getObjects(niño.class).clear();
-        
+       
         Greenfoot.setWorld(nivel);
         getWorld().removeObjects(getWorld().getObjects(Fantasma.class));
         getWorld().removeObjects(getWorld().getObjects(niño.class));
         getWorld().removeObjects(getWorld().getObjects(Points.class));
         getWorld().removeObjects(getWorld().getObjects(libro.class));
+
         }
        
          
@@ -141,6 +130,8 @@ public class libro extends Actor
             {
                 cont2=1;
                 Win();
+                
+                
             }
         }
         
@@ -149,6 +140,7 @@ public class libro extends Actor
     {
         this.points=points;
     }
+    
     
     
     

@@ -22,6 +22,7 @@ private boolean fin;
         imagesBarraPuntos=new GreenfootImage[6];
         imagesBarraPuntos[4]=new GreenfootImage("C:/Users/MIRI/OneDrive/Escritorio/horrorList/images/b0.png");
 
+        
         imagesBarraPuntos[3]=new GreenfootImage("C:/Users/MIRI/OneDrive/Escritorio/horrorList/images/b1.png");
         imagesBarraPuntos[2]=new GreenfootImage("C:/Users/MIRI/OneDrive/Escritorio/horrorList/images/b2.png");
         imagesBarraPuntos[1]=new GreenfootImage("C:/Users/MIRI/OneDrive/Escritorio/horrorList/images/b3.png");
@@ -75,6 +76,7 @@ private boolean fin;
         librin.setImagesBarr(imagesBarraPuntos);
         librin.setLocation(0,0);
         librin.setPoints(points);
+        
         
         apareceLetrero("Parcial 2");
     }

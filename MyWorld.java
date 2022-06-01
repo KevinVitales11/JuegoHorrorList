@@ -13,17 +13,15 @@ public class MyWorld extends World
     private Wall p=new Wall();
     public int cambiador=0;
     public GreenfootImage []imagesBarraPuntos;
+    
  
-    GreenfootSound soundSusu=new GreenfootSound("C:/Users/MIRI/OneDrive/Escritorio/horrorList/sounds/susurro.mp3");
+    //GreenfootSound soundSusu=new GreenfootSound("C:/Users/MIRI/OneDrive/Escritorio/horrorList/sounds/susurro.mp3");
 
     
-    /**
-     * Constructor for objects of class MyWorld.
-     * 
-     */
+
     public MyWorld()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        
         super(1100, 600, 1); 
        
         imagesBarraPuntos=new GreenfootImage[6];
@@ -41,26 +39,19 @@ public class MyWorld extends World
         prepare();
         
         
-        //
         
-        //setBackground("C:/Users/MIRI/OneDrive/Escritorio/horrorList/images/descarga.jpg");
-        
-    
-       
-        //Greenfoot.playSound("C:/Users/MIRI/OneDrive/Escritorio/horrorList/sounds/Casca.mp3");
        
     }
     public void act()
     {
-        soundSusu.playLoop();
-        soundSusu.setVolume(100);
+        
         Greenfoot.setSpeed(50);
         if(cambiador==0)
         {
             cambiador=-1;
             Menu menu=new Menu(this);
             Level2 nivelDos=new Level2();
-            soundSusu.stop();
+           
             Greenfoot.setWorld(menu);
             
         }
@@ -132,6 +123,10 @@ public class MyWorld extends World
         maceta maceta3 = new maceta();
         addObject(maceta3,1009,389);
         librin.setNiño(personaje);
+
+        Music music=new Music(new GreenfootSound("C:/Users/MIRI/OneDrive/Escritorio/horrorList/sounds/talking.mp3"));
+        addObject(music,0,0);
+        
         
     }
 
@@ -157,10 +152,7 @@ public class MyWorld extends World
         aleatorio=(int)(Math.random()*10);
         return aleatorio;
     }
-    public GreenfootSound getSoundSusu()
-    {
-        return soundSusu;
-    }
+   
     
    
     

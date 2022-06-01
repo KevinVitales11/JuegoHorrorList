@@ -42,7 +42,7 @@ public class niño extends Actor
         
        
         
-        
+    
                 
     }
     niño()
@@ -153,7 +153,6 @@ public class niño extends Actor
                 cont=1;
             }
             ok=1;
-           // giraEnEspejo();
         }else if(Greenfoot.isKeyDown("DOWN"))
         {
             
@@ -183,37 +182,22 @@ public class niño extends Actor
                     volteado=false;
                 }
                 setImage(imgShoot);
-                //mueveteBala();
                 bala.setLocation(getX(),getY());
                 Greenfoot.playSound("C:/Users/MIRI/OneDrive/Escritorio/horrorList/sounds/disparo.mp3");
-                //fantasma.setLocation(fantasma.getX()+offSetX,fantasma.getY());
                 contS=0;
                 getWorld().addObject(bala, 800,getY());
                 disparo=true;
-                
-               // Greenfoot.delay(20);
-                
-                
-               
-                
-                
-                
+
             }
-            if(bala.getX()>=1000||bala.getX()<=0)
+            if(bala.getX()>=1000||bala.getX()==0)
             {
             
                 disparo=false;
-                //bala.setLocation(getX(),getY());
-                
-                //getWorld().removeObject(bala);
             }
             if(bala.getDaño())
             {
-                //getWorld().removeObject(fantasma);
                 fantasma.toco();
                 bajas++;
-                
-               // fantasma.move(20);
             }
             if(disparo==true && bala.getX()<1000)
             {
@@ -224,11 +208,7 @@ public class niño extends Actor
             {
                 bala.setLocation(800,0);
             }
-            
-        
-            
-            
-        
+
         }else if(Greenfoot.isKeyDown("x"))
         {
             if(contS>tiempo)
@@ -238,36 +218,20 @@ public class niño extends Actor
                     imgShoot.mirrorHorizontally();
                     volteado=true;
                 }
-                
                 setImage(imgShoot);
-                //mueveteBala();
                 bala.setLocation(getX(),getY());
                 Greenfoot.playSound("C:/Users/MIRI/OneDrive/Escritorio/horrorList/sounds/disparo.mp3");
-                //fantasma.setLocation(fantasma.getX()+offSetX,fantasma.getY());
                 contS=0;
                 getWorld().addObject(bala, 800,getY());
-                disparo=true;
-                
-                               
-                
-               
-                
-                
-                
+                disparo=true; 
             }
             if(bala.getX()>=1000||bala.getX()<=0)
             {
-            
                 disparo=false;
-                //bala.setLocation(getX(),getY());
-                
-                //getWorld().removeObject(bala);
             }
             if(bala.getDaño())
             {
-                //getWorld().removeObject(fantasma);
                 fantasma.toco();
-               // fantasma.move(20);
             }
             if(disparo==true && bala.getX()<1000)
             {
@@ -278,16 +242,10 @@ public class niño extends Actor
             {
                 bala.setLocation(800,0);
             }
-            
-            
         }else
         {
             cont=1;
-            
-            setImage(images[0]);
-            
-                
-            
+            setImage(images[0]);   
         }
         
     }
@@ -301,12 +259,9 @@ public class niño extends Actor
             
         }
     
-    
-
     public void quejate()
     {
         setImage(images2[4]);
-    
         sound.play();
         sound.setVolume(100);
     }
@@ -326,9 +281,6 @@ public class niño extends Actor
          {
              contS=300;
          }
-       
-        
-        
     }
     public void setFantasma(Fantasma fantasma)
     {
