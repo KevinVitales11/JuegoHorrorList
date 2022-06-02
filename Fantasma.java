@@ -1,12 +1,6 @@
 import greenfoot.*; 
-import java.util.Random; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.Random; 
 
-/**
- * Write a description of class Fantasma here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Fantasma extends Actor
 {
     private GreenfootImage img;
@@ -30,26 +24,23 @@ public class Fantasma extends Actor
     public boolean bandera=true;
     public boolean bandera2=false;
     private boolean bandera3=false;
-    GreenfootSound pie=new GreenfootSound("C:/Users/MIRI/OneDrive/Escritorio/horrorList/sounds/grito.mp3");
-   
-    /**
-     * Act - do whatever the Fantasma wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    GreenfootSound pie=new GreenfootSound("sounds/grito.mp3");
+
     public void act()
     {
-         perseguir(); 
+        perseguir(); 
     }
+
     public Fantasma()
     {
         img=getImage();
         img.mirrorHorizontally();
         img.scale(img.getWidth()-250,img.getHeight()-250);
     }
+
     public Fantasma(niño nini, vida vid,vida vid2,vida vid3)
     {
-        
-       
+
         this.vidi2=vid2;
         this.vidi3=vid3;
         this.nini=nini;
@@ -59,70 +50,65 @@ public class Fantasma extends Actor
         img.scale(img.getWidth()-250,img.getHeight()-250);
         ObjFantx=nini.getX();
         ObjFanty=nini.getY();
-        
-        
+
     }
     public void perseguir()
     {
-        
-        
+
 
         ObjFanty=nini.getY();
-        
         Objx=getX();
         Objy=getY();
-               
-        
+
         if(bandera==false)
         {
-                
+
             repoduceOneTimeSound();
             setLocation(ObjFantx+930+cont,ObjFanty);
             if(getWorld().getObjects(vida.class)==null)
             {
-                Greenfoot.playSound("C:/Users/MIRI/OneDrive/Escritorio/horrorList/sounds/noo.mp3");
-                   
-                   Greenfoot.setWorld(esce);
-                   getWorld().removeObject(nini);
-                   getWorld().removeObject(this);
-                
+                Greenfoot.playSound("sounds/noo.mp3");
+
+                Greenfoot.setWorld(esce);
+                getWorld().removeObject(nini);
+                getWorld().removeObject(this);
+
             }
             if(isTouching(niño.class)==true)
             { 
-               toco();
-               nini.move(-130);
-               if(contDalay==1)
-               {
-                   getWorld().removeObject(vidi3); 
-                   nini.quejate();
-                   Greenfoot.delay(30);
-               }else if(contDalay==2)
-               {
-                   getWorld().removeObject(vidi);
-                   nini.quejate();
-                   Greenfoot.delay(30);
-               }else if(contDalay==3)
-               {
-                
-                getWorld().removeObject(vidi2);
-                nini.quejate();
-                Greenfoot.delay(30);
-               }else
-               {
-                   Greenfoot.playSound("C:/Users/MIRI/OneDrive/Escritorio/horrorList/sounds/noo.mp3");
+                toco();
+                nini.move(-130);
+                if(contDalay==1)
+                {
+                    getWorld().removeObject(vidi3); 
+                    nini.quejate();
+                    Greenfoot.delay(30);
+                }else if(contDalay==2)
+                {
+                    getWorld().removeObject(vidi);
+                    nini.quejate();
+                    Greenfoot.delay(30);
+                }else if(contDalay==3)
+                {
+
+                    getWorld().removeObject(vidi2);
+                    nini.quejate();
+                    Greenfoot.delay(30);
+                }else
+                {
+                    Greenfoot.playSound("sounds/noo.mp3");
+
+                    Greenfoot.setWorld(esce);
+                    getWorld().removeObject(nini);
+                    getWorld().removeObject(this);
+
                    
-                   Greenfoot.setWorld(esce);
-                   getWorld().removeObject(nini);
-                   getWorld().removeObject(this);
-                   
-                   
-                   
-               }
+                }
                 contDalay++; 
-               
+
             }
             cont=cont-(Greenfoot.getRandomNumber(10)+8);
-        
+
         }else
         {
             if(tiempo==contador)
@@ -132,48 +118,45 @@ public class Fantasma extends Actor
                 contador=0;
             }
             contador++;
-            
+
         }
-            
-        
+
     }
-   
     
     private int aleatorio()
     {
         Random dado=new Random();
         int numero;
         numero=dado.nextInt(100+10);
-    
         return numero;
     }
+
     private void repoduceOneTimeSound()
     {
         if(bandera2==false)
         {
-            pie.setVolume(10);
+            pie.setVolume(30);
             pie.play();
             bandera2=true;
-            
+
         }
-        
+
     }
+
     public Fantasma getFantasma()
     {
         return(this);
     }
-    
+
     public void toco()
     {
-               contador=0;
-               setLocation(0,0);
-               cont=0;
-               bandera=true;
-               bandera2=false;
-               ObjFantx=nini.getX();
+        contador=0;
+        setLocation(0,0);
+        cont=0;
+        bandera=true;
+        bandera2=false;
+        ObjFantx=nini.getX();
     }
-    
 
    
-  
 }
