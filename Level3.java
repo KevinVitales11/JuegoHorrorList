@@ -1,32 +1,23 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;  
 
-/**
- * Write a description of class Level3 here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Level3 extends World
 
 {
 
     public GreenfootImage []imagesBarraPuntos;
-    /**
-     * Constructor for objects of class Level3.
-     * 
-     */
+
     public Level3()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+
         super(1100, 600, 1);
         imagesBarraPuntos=new GreenfootImage[6];
-        imagesBarraPuntos[4]=new GreenfootImage("C:/Users/MIRI/OneDrive/Escritorio/horrorList/images/b0.png");
+        imagesBarraPuntos[4]=new GreenfootImage("images/b0.png");
 
-        imagesBarraPuntos[3]=new GreenfootImage("C:/Users/MIRI/OneDrive/Escritorio/horrorList/images/b1.png");
-        imagesBarraPuntos[2]=new GreenfootImage("C:/Users/MIRI/OneDrive/Escritorio/horrorList/images/b2.png");
-        imagesBarraPuntos[1]=new GreenfootImage("C:/Users/MIRI/OneDrive/Escritorio/horrorList/images/b3.png");
-        imagesBarraPuntos[0]=new GreenfootImage("C:/Users/MIRI/OneDrive/Escritorio/horrorList/images/b4.png");
-    
+        imagesBarraPuntos[3]=new GreenfootImage("images/b1.png");
+        imagesBarraPuntos[2]=new GreenfootImage("images/b2.png");
+        imagesBarraPuntos[1]=new GreenfootImage("images/b3.png");
+        imagesBarraPuntos[0]=new GreenfootImage("images/b4.png");
+
         imagesBarraPuntos[0].scale(imagesBarraPuntos[0].getWidth()-200,imagesBarraPuntos[0].getHeight()-30);
         imagesBarraPuntos[1].scale(imagesBarraPuntos[1].getWidth()-200,imagesBarraPuntos[1].getHeight()-30);
         imagesBarraPuntos[2].scale(imagesBarraPuntos[2].getWidth()-200,imagesBarraPuntos[2].getHeight()-30);
@@ -35,20 +26,17 @@ public class Level3 extends World
 
         prepare();
     }
+
     private void prepare()
     {
         niño nini=new niño();
-        
         addObject(nini, 100,600);
         libro librin=new libro();
         librin.finEnd=true;
         librin.fin=true;
         addObject(librin,120 , 100);
-        
-         vida vida = new vida();
-
+        vida vida = new vida();
         addObject(vida,930,80);
-
         vida vida2 = new vida();
         addObject(vida2,840,80);
         vida vida3 = new vida();
@@ -58,9 +46,8 @@ public class Level3 extends World
         Profe pro=new Profe(nini,vida,vida2,vida3);
         addObject(pro, 0, 0);
         nini.setFantasma(fantasma);
-       Points points=new Points();
+        Points points=new Points();
         addObject(points, 200, 70);
-        
         librin.setImagesBarr(imagesBarraPuntos);
         librin.setLocation(0,0);
         librin.setPoints(points);
@@ -69,26 +56,16 @@ public class Level3 extends World
         maceta ma3=new maceta();
         maceta ma4=new maceta();
         maceta ma5=new maceta();
-         addObject(ma1, 500, 100);
-         addObject(ma2, 300, 600);
-         addObject(ma3, 400, 300);
-         addObject(ma4, 100, 400);
-         addObject(ma5, 350, 200);
-        
-        
+        addObject(ma1, 500, 100);
+        addObject(ma2, 300, 600);
+        addObject(ma3, 400, 300);
+        addObject(ma4, 100, 400);
+        addObject(ma5, 350, 200);
         apareceLetrero("Parcial 3");
-        
     }
     protected void apareceLetrero(String text)
     {
         Letrero letrero= new Letrero(text);
-        
-        
-        
-         addObject(letrero, getWidth()/2+70,getHeight()-100);
-         
-         
-         
-        
+        addObject(letrero, getWidth()/2+70,getHeight()-100);
     }
 }

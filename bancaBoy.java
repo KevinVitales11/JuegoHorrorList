@@ -1,29 +1,12 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;  
 
-/**
- * Write a description of class bancaBoy here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class bancaBoy extends Item
 {
     GreenfootImage img;
-    /**
-     * Act - do whatever the bancaBoy wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act()
-    {
-        // Add your action code here.
-    }
-    
+
     bancaBoy()
     {
         img=getImage();
-        img.scale(img.getWidth()-200+10, img.getHeight()-240);
-        
-        
-        
+        img.scale(img.getWidth()-200+10, img.getHeight()-240);       
     }
 }
