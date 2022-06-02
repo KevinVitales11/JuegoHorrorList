@@ -12,35 +12,46 @@ public class MyWorld extends World
 {
     private Wall p=new Wall();
     public int cambiador=0;
+    public GreenfootImage []imagesBarraPuntos;
+    
+ 
+    //GreenfootSound soundSusu=new GreenfootSound("C:/Users/MIRI/OneDrive/Escritorio/horrorList/sounds/susurro.mp3");
 
     
-    /**
-     * Constructor for objects of class MyWorld.
-     * 
-     */
+
     public MyWorld()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        
         super(1100, 600, 1); 
        
+        imagesBarraPuntos=new GreenfootImage[6];
+        imagesBarraPuntos[4]=new GreenfootImage("C:/Users/MIRI/OneDrive/Escritorio/horrorList/images/b0.png");
+        imagesBarraPuntos[3]=new GreenfootImage("C:/Users/MIRI/OneDrive/Escritorio/horrorList/images/b1.png");
+        imagesBarraPuntos[2]=new GreenfootImage("C:/Users/MIRI/OneDrive/Escritorio/horrorList/images/b2.png");
+        imagesBarraPuntos[1]=new GreenfootImage("C:/Users/MIRI/OneDrive/Escritorio/horrorList/images/b3.png");
+        imagesBarraPuntos[0]=new GreenfootImage("C:/Users/MIRI/OneDrive/Escritorio/horrorList/images/b4.png");
+    
+        imagesBarraPuntos[0].scale(imagesBarraPuntos[0].getWidth()-200,imagesBarraPuntos[0].getHeight()-30);
+        imagesBarraPuntos[1].scale(imagesBarraPuntos[1].getWidth()-200,imagesBarraPuntos[1].getHeight()-30);
+        imagesBarraPuntos[2].scale(imagesBarraPuntos[2].getWidth()-200,imagesBarraPuntos[2].getHeight()-30);
+        imagesBarraPuntos[3].scale(imagesBarraPuntos[3].getWidth()-200,imagesBarraPuntos[3].getHeight()-30);
+        imagesBarraPuntos[4].scale(imagesBarraPuntos[4].getWidth()-200,imagesBarraPuntos[4].getHeight()-30);
         prepare();
         
         
-        //
         
-        //setBackground("C:/Users/MIRI/OneDrive/Escritorio/horrorList/images/descarga.jpg");
-        
-    
-       
-        //Greenfoot.playSound("C:/Users/MIRI/OneDrive/Escritorio/horrorList/sounds/Casca.mp3");
        
     }
     public void act()
     {
+        
+        Greenfoot.setSpeed(50);
         if(cambiador==0)
         {
             cambiador=-1;
             Menu menu=new Menu(this);
+            Level2 nivelDos=new Level2();
+           
             Greenfoot.setWorld(menu);
             
         }
@@ -52,22 +63,20 @@ public class MyWorld extends World
 
         
         niño personaje=new niño();
-        libro librin=new libro();
+        Points points=new Points();
+        addObject(points, 200, 70);
         GreenfootImage img= new GreenfootImage("C:/Users/MIRI/OneDrive/Escritorio/horrorList/images/pisoMadera.jpg");
         setBackground(img);
-        libro librin2=new libro();
-        libro librin3=new libro();
-        librin.getImage().scale(30, 30);
-        librin2.getImage().scale(30, 30);
-        librin3.getImage().scale(30, 30);
-        addObject(personaje,50,100);
-        addObject(librin,100,100);
-        addObject(librin2,100,100);
-        addObject(librin3,100,100);
-        librin.setLocation(700,70);
-        librin2.setLocation(500,120);
-        librin3.setLocation(400,300);
+        libro librin=new libro();
+        librin.setImagesBarr(imagesBarraPuntos);
+        librin.setLocation(0,0);
+        librin.setPoints(points);
+        addObject(librin,800,800);
+        
+        
+        
 
+        addObject(personaje,80,200);
         vida vida = new vida();
 
         addObject(vida,930,80);
@@ -113,6 +122,11 @@ public class MyWorld extends World
         addObject(maceta2,31,538);
         maceta maceta3 = new maceta();
         addObject(maceta3,1009,389);
+        librin.setNiño(personaje);
+
+        Music music=new Music(new GreenfootSound("C:/Users/MIRI/OneDrive/Escritorio/horrorList/sounds/talking.mp3"));
+        addObject(music,0,0);
+        
         
     }
 
@@ -138,6 +152,7 @@ public class MyWorld extends World
         aleatorio=(int)(Math.random()*10);
         return aleatorio;
     }
+   
     
    
     

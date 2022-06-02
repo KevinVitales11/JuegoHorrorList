@@ -1,15 +1,15 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class maceta here.
+ * Write a description of class Botones here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class maceta extends Item
+public class Botones extends Actor
 {
     /**
-     * Act - do whatever the maceta wants to do. This method is called whenever
+     * Act - do whatever the Botones wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()

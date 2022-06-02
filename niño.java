@@ -15,34 +15,34 @@ public class niño extends Actor
     private GreenfootSound sound =new GreenfootSound("C:/Users/MIRI/OneDrive/Escritorio/horrorList/sounds/golpe.mp3");
     private int offSetX=0;
     private int offSetY=0;
+    private int cont=1;
+    private int contDalay=0;
+    private int ok=0;
+    private int contStatic=0;
+    private static int vol=50;
+    private static int tiempo=70;
+    private int contS=0;
+    private boolean disparo=false;
+    public int bajas=0;
     Fantasma fantasma;
     Bala bala= new Bala(fantasma);
-    GreenfootSound soundSusu=new GreenfootSound("C:/Users/MIRI/OneDrive/Escritorio/horrorList/sounds/susurro.mp3");
+    private boolean volteado=false;
     GreenfootSound soundWalk=new GreenfootSound("C:/Users/MIRI/OneDrive/Escritorio/horrorList/sounds/pasos.mp3");
-    int cont=1;
-    int contDalay=0;
-    int ok=0;
-    int contStatic=0;
-    int vol=20;
-    int tiempo=200;
-    int contS=0;
-    boolean disparo=false;
+        
    
     
     public void act()
     {
          
         move();
-        restar();
-        soundSusu.playLoop();
-        soundSusu.setVolume(20);
+        
         dispara();
         getWorld().addObject(bala, 800,0);
         noTocar();
         
        
         
-        
+    
                 
     }
     niño()
@@ -153,7 +153,6 @@ public class niño extends Actor
                 cont=1;
             }
             ok=1;
-           // giraEnEspejo();
         }else if(Greenfoot.isKeyDown("DOWN"))
         {
             
@@ -170,41 +169,35 @@ public class niño extends Actor
             
             
         }
-        else if(Greenfoot.isKeyDown("V"))
+        else if(Greenfoot.isKeyDown("SPACE"))
         {
         
             
             if(contS>tiempo)
             {
-                
+                if(volteado==true)
+                {
+                    imgShoot.mirrorHorizontally();
+                    bala.getImage().mirrorHorizontally();
+                    volteado=false;
+                }
                 setImage(imgShoot);
-                //mueveteBala();
                 bala.setLocation(getX(),getY());
                 Greenfoot.playSound("C:/Users/MIRI/OneDrive/Escritorio/horrorList/sounds/disparo.mp3");
-                //fantasma.setLocation(fantasma.getX()+offSetX,fantasma.getY());
                 contS=0;
                 getWorld().addObject(bala, 800,getY());
                 disparo=true;
-                
-               // Greenfoot.delay(20);
-                
-                
-               
-                
-                
-                
+
             }
-            if(bala.getX()>=1000)
+            if(bala.getX()>=1000||bala.getX()==0)
             {
             
                 disparo=false;
-                //bala.setLocation(getX(),getY());
-                
-                //getWorld().removeObject(bala);
             }
             if(bala.getDaño())
             {
-                getWorld().removeObject(fantasma);
+                fantasma.toco();
+                bajas++;
             }
             if(disparo==true && bala.getX()<1000)
             {
@@ -215,19 +208,44 @@ public class niño extends Actor
             {
                 bala.setLocation(800,0);
             }
-            
-            
-            
-            
-        
+
+        }else if(Greenfoot.isKeyDown("x"))
+        {
+            if(contS>tiempo)
+            {
+                if(volteado==false)
+                {
+                    imgShoot.mirrorHorizontally();
+                    volteado=true;
+                }
+                setImage(imgShoot);
+                bala.setLocation(getX(),getY());
+                Greenfoot.playSound("C:/Users/MIRI/OneDrive/Escritorio/horrorList/sounds/disparo.mp3");
+                contS=0;
+                getWorld().addObject(bala, 800,getY());
+                disparo=true; 
+            }
+            if(bala.getX()>=1000||bala.getX()<=0)
+            {
+                disparo=false;
+            }
+            if(bala.getDaño())
+            {
+                fantasma.toco();
+            }
+            if(disparo==true && bala.getX()<1000)
+            {
+                
+                bala.setLocation(bala.getX()-100,bala.getY());
+                
+            }else
+            {
+                bala.setLocation(800,0);
+            }
         }else
         {
             cont=1;
-            
-            setImage(images[0]);
-            
-                
-            
+            setImage(images[0]);   
         }
         
     }
@@ -241,18 +259,18 @@ public class niño extends Actor
             
         }
     
-    private void restar()
-    {
-        if(isTouching(libro.class)==true)
-        {
-            removeTouching(libro.class);
-        }
-    }
-
     public void quejate()
     {
         setImage(images2[4]);
-    
+        sound.play();
+        sound.setVolume(100);
+    }
+    public void quejate2()
+    {
+        images2[4].mirrorHorizontally();
+        setImage(images2[4]);
+        Greenfoot.delay(30);
+        images2[4].mirrorHorizontally();
         sound.play();
         sound.setVolume(100);
     }
@@ -263,9 +281,6 @@ public class niño extends Actor
          {
              contS=300;
          }
-       
-        
-        
     }
     public void setFantasma(Fantasma fantasma)
     {
@@ -277,6 +292,15 @@ public class niño extends Actor
         {
             move(-10);
         }
+        if (isTouching(Arbusto.class))
+        {
+            setLocation(getX(), getY()+10);
+        }
+        if (isTouching(Tienda.class))
+        {
+            setLocation(getX(), getY()+10);
+        }
+        
         
     }
     

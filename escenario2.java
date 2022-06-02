@@ -45,10 +45,16 @@ public class escenario2 extends World
        
         showText("NO ENTREGASTE LA LINKED LIST",getWidth()/2, getHeight()/2);
         showText("STAS REPROBADO",getWidth()/2, getHeight()/2+100);
+        
        
       
         
      
+    }
+
+    public void act()
+    {
+        stopped();
     }
     
    
