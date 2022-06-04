@@ -4,17 +4,18 @@ public class Level2 extends World
 {
     public GreenfootImage []imagesBarraPuntos;
     private boolean fin;
-    /**
-     * Constructor for objects of class Level2.
-     * 
-     */
-
+    public int Score1;
+    public int Score2;
+    public int Score3;
+    libro librin=new libro();
+    
     public Level2()
     {    
         super(1100, 600, 1);
         imagesBarraPuntos=new GreenfootImage[6];
         imagesBarraPuntos[4]=new GreenfootImage("images/b0.png");
 
+        
         imagesBarraPuntos[3]=new GreenfootImage("images/b1.png");
         imagesBarraPuntos[2]=new GreenfootImage("images/b2.png");
         imagesBarraPuntos[1]=new GreenfootImage("images/b3.png");
@@ -36,7 +37,7 @@ public class Level2 extends World
         addObject(per, getWidth()/2-120, getHeight()/2-30);
         niño nini=new niño();
         addObject(nini, 100,600);
-        libro librin=new libro();
+        
         librin.fin=true;
         addObject(librin,120 , 100);
         Arbusto arbus=new Arbusto();
@@ -62,12 +63,32 @@ public class Level2 extends World
         librin.setImagesBarr(imagesBarraPuntos);
         librin.setLocation(0,0);
         librin.setPoints(points);
+        librin.Score[0]=Score1;
+        librin.Score[1]=Score2;
+        librin.Score[2]=Score3;
         apareceLetrero("Parcial 2");
+    }
+    public void act()
+    {
+        
+        
     }
 
     protected void apareceLetrero(String text)
     {
         Letrero letrero= new Letrero(text);
         addObject(letrero, getWidth()/2+70,getHeight()-100);
+    }
+    public void setScore1(int Score1)
+    {
+        this.Score1=Score1;
+    }
+    public void setScore2(int Score2)
+    {
+        this.Score2=Score2;
+    }
+    public void setScore3(int Score3)
+    {
+        this.Score3=Score3;
     }
 }

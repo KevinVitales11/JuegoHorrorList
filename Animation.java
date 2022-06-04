@@ -4,7 +4,7 @@ public class Animation extends World
 {
 
     MyWorld l;
-    Level2 level=new Level2();
+    
 
     public Animation(MyWorld l)
     {    

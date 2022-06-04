@@ -5,11 +5,17 @@ public class Level3 extends World
 {
 
     public GreenfootImage []imagesBarraPuntos;
+    public int Score1;
+    public int Score2;
+    public int Score3;
+    Cuenta contadorT;
 
     public Level3()
     {    
 
         super(1100, 600, 1);
+
+        
         imagesBarraPuntos=new GreenfootImage[6];
         imagesBarraPuntos[4]=new GreenfootImage("images/b0.png");
 
@@ -61,11 +67,30 @@ public class Level3 extends World
         addObject(ma3, 400, 300);
         addObject(ma4, 100, 400);
         addObject(ma5, 350, 200);
+        librin.Score[0]=Score1;
+        librin.Score[1]=Score2;
+        librin.Score[2]=Score3;
         apareceLetrero("Parcial 3");
     }
     protected void apareceLetrero(String text)
     {
         Letrero letrero= new Letrero(text);
         addObject(letrero, getWidth()/2+70,getHeight()-100);
+    }
+    public void setScore1(int Score1)
+    {
+        this.Score1=Score1;
+    }
+    public void setScore2(int Score2)
+    {
+        this.Score2=Score2;
+    }
+    public void setScore3(int Score3)
+    {
+        this.Score3=Score3;
+    }
+    public void setContador(Cuenta cuenta)
+    {
+        this.contadorT=cuenta;
     }
 }

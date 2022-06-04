@@ -5,6 +5,7 @@ public class libro extends Actor
 
     private GreenfootImage []imagesLibro;
     private GreenfootImage []imagesBarr;
+    public int[] Score=new int[3];
     Points points;
     private int cont=0;
     private int tiempo=110;
@@ -15,11 +16,15 @@ public class libro extends Actor
     public boolean finEnd=false;
     niño nini;
     private int time;
-
+    private int contadorTiempo=0;
+    Cuenta contadorT;
+    
+    Record MundoRecord=new Record(Score);
     public libro()
     {
         getImage().scale(30, 30);
         setLocation(800,800);
+        
 
        
     }
@@ -30,6 +35,7 @@ public class libro extends Actor
         apareceteAleatoriamente();
         restar();
         aumentaPuntos();
+        contadorTiempo++;
 
     }
 
@@ -78,32 +84,49 @@ public class libro extends Actor
         if(fin==true)
         {
 
+            
             if(finEnd==true)
             {
 
-                win ganar=new win();
+                Score[2]=contadorTiempo/100;
+                win ganar=new win(Score);
+                ganar.Score1=Score[0];
+                ganar.Score2=Score[1];
+                ganar.Score3=Score[2];
+                
                 Greenfoot.setWorld(ganar); 
                 getWorld().removeObjects(getWorld().getObjects(Music.class));
             }else
             {
 
                 Level3 nivelFin=new Level3();
+                Score[1]=contadorTiempo/100;
+                nivelFin.Score1=Score[0];
+                nivelFin.Score2=Score[1];
+                nivelFin.Score3=Score[2];
+              
                 Greenfoot.setWorld(nivelFin);
                 getWorld().removeObjects(getWorld().getObjects(Fantasma.class));
                 getWorld().removeObjects(getWorld().getObjects(niño.class));
                 getWorld().removeObjects(getWorld().getObjects(Points.class));
-                getWorld().removeObjects(getWorld().getObjects(libro.class));
+                
 
             }
         }else
         {
             Level2 nivel=new Level2();
+            
 
+            Score[0]=contadorTiempo/100;
+            nivel.Score1=Score[0];
+            nivel.Score2=Score[1];
+            nivel.Score3=Score[2];
+            
             Greenfoot.setWorld(nivel);
             getWorld().removeObjects(getWorld().getObjects(Fantasma.class));
             getWorld().removeObjects(getWorld().getObjects(niño.class));
             getWorld().removeObjects(getWorld().getObjects(Points.class));
-            getWorld().removeObjects(getWorld().getObjects(libro.class));
+            
 
         }
 
@@ -136,6 +159,7 @@ public class libro extends Actor
     {
         this.points=points;
     }
+    
 
     
 

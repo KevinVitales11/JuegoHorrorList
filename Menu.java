@@ -4,6 +4,7 @@ public class Menu extends World
 {
     BotonPlay botonPlay = new BotonPlay();
     Instrucciones instrucciones = new Instrucciones();
+    BotonRecords records=new BotonRecords();
     MyWorld l;
     private int tiempo=200;
     private int cont=0;
@@ -35,6 +36,9 @@ public class Menu extends World
         {
             MundoInstruc inst=new MundoInstruc(l); 
             Greenfoot.setWorld(inst);
+        }else if(Greenfoot.mouseClicked(records))
+        {
+            
         }
     }
 
@@ -48,6 +52,8 @@ public class Menu extends World
         addObject(version,311-10,180);
 
         addObject(instrucciones,307,246);
+        BotonRecords records=new BotonRecords();
+       
     }
 
     private void Animacion()

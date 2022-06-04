@@ -6,8 +6,10 @@ import java.lang.Object;
 public class MyWorld extends World
 {
     private Wall p=new Wall();
+    
     public int cambiador=0;
     public GreenfootImage []imagesBarraPuntos;
+    int tiempo=0;
 
     public MyWorld()
     {    
@@ -40,12 +42,14 @@ public class MyWorld extends World
             Greenfoot.setWorld(menu);
 
         }
+       
 
     }
 
     private void prepare()
     {
 
+        
         niño personaje=new niño();
         Points points=new Points();
         addObject(points, 200, 70);
@@ -106,6 +110,8 @@ public class MyWorld extends World
         librin.setNiño(personaje);
         Music music=new Music(new GreenfootSound("sounds/talking.mp3"));
         addObject(music,0,0);
+        Cuenta contador=new Cuenta();
+        addObject(contador, 0,0);
 
     }
     protected void apareceLetrero(String text)
