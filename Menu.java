@@ -1,5 +1,5 @@
 import greenfoot.*;  
-
+import javax.swing.JOptionPane;
 public class Menu extends World
 {
     BotonPlay botonPlay = new BotonPlay();
@@ -8,6 +8,10 @@ public class Menu extends World
     MyWorld l;
     private int tiempo=200;
     private int cont=0;
+    int Score[]=new int[4];
+    private String nombre;
+  
+
     public Menu(MyWorld l)
     {    
 
@@ -18,28 +22,28 @@ public class Menu extends World
     }
     public void act()
     {
-        MouseInfo mouse = Greenfoot.getMouseInfo();
 
-        if(mouse!=null)
+        MouseInfo mouse = Greenfoot.getMouseInfo();
+        pideNombre();
+
+        if(Greenfoot.mouseClicked(records))
         {
-            if(mouse.getX()==botonPlay.getX()&&mouse.getY()==botonPlay.getY())
-            {
-                botonPlay.getImage().scale(botonPlay.getImage().getWidth()+100, botonPlay.getImage().getHeight()+100);
-            }
-        }
-        if(Greenfoot.mouseClicked(botonPlay))
+            Record record =new Record(Score);
+            record.setMenu(this);
+            record.setNombre(nombre);
+            Greenfoot.setWorld(record);
+        }else if(Greenfoot.mouseClicked(botonPlay))
         {
             Greenfoot.playSound("sounds/sonidoBoton.mp3");
-            Animacion();
+            animacion();
 
         }else if(Greenfoot.mouseClicked(instrucciones))
         {
             MundoInstruc inst=new MundoInstruc(l); 
+            inst.setMenu(this);
             Greenfoot.setWorld(inst);
-        }else if(Greenfoot.mouseClicked(records))
-        {
-            
         }
+
     }
 
     private void prepare()
@@ -50,16 +54,29 @@ public class Menu extends World
         addObject(tItle,314,72);
         Version version = new Version();
         addObject(version,311-10,180);
-
         addObject(instrucciones,307,246);
-        BotonRecords records=new BotonRecords();
-       
+
+        addObject(records, getWidth()/2,getHeight()/2+150);
     }
 
-    private void Animacion()
+    private void animacion()
     {
         Animation animation=new Animation(l);
         Greenfoot.setWorld(animation);
 
+    }
+
+    public void setScore(int []Score)
+    {
+        this.Score=Score;
+    }
+
+    private void pideNombre()
+    {
+        if(nombre==null)
+        {
+
+            nombre = JOptionPane.showInputDialog("¿Cual es tu nombre?");
+        }
     }
 }

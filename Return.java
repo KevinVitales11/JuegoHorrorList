@@ -3,8 +3,15 @@ import greenfoot.*;
 public class Return extends Botones
 {
     MyWorld m;
+    
     MyWorld n=new MyWorld();
 
+    Menu menu;
+     public Return(MyWorld l,Menu menu)
+    {
+        this.m=l;
+        this.menu=menu;
+    }
     public void act()
     {
         if(Greenfoot.mouseClicked(this))
@@ -12,7 +19,7 @@ public class Return extends Botones
             Greenfoot.playSound("sounds/sonidoBoton.mp3");
             if(m!=null)
             {
-                Menu menu=new Menu(m);
+                
                 Greenfoot.setWorld(menu);
             }else
             {
@@ -23,8 +30,6 @@ public class Return extends Botones
         }
     }
 
-    public Return(MyWorld l)
-    {
-        this.m=l;
-    }
+   
+    
 }

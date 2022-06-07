@@ -1,12 +1,15 @@
 import greenfoot.*; 
 import greenfoot.GreenfootSound;
 
-public class niño extends Actor
+public class Niño extends Actor
 {
     private GreenfootImage []images;
     private GreenfootImage []images2;
     private GreenfootImage imgShoot;
     private GreenfootSound sound =new GreenfootSound("sounds/golpe.mp3");
+    private Vida vidi;
+    private Vida vidi2;
+    private Vida vidi3;
     private int offSetX=0;
     private int offSetY=0;
     private int cont=1;
@@ -37,9 +40,12 @@ public class niño extends Actor
                 
     }
 
-    niño()
+    Niño(Vida vidi, Vida vidi2 ,Vida vidi3)
     {
 
+         this.vidi=vidi;
+         this.vidi2=vidi2;
+         this.vidi3=vidi3;
         images=new GreenfootImage[9];
         images2=new GreenfootImage[5];
         images[0] =new GreenfootImage("images/niño.png");
@@ -274,7 +280,7 @@ public class niño extends Actor
 
     private void noTocar()
     {
-        if (isTouching(maceta.class))
+        if (isTouching(Maceta.class))
         {
             move(-10);
         }
@@ -288,5 +294,19 @@ public class niño extends Actor
         }
 
     }
+    
+    public void removeVida1()
+    {
+        getWorld().removeObject(vidi);
+    }
+    public void removeVida2()
+    {
+        getWorld().removeObject(vidi2);
+    }
+    public void removeVida3()
+    {
+        getWorld().removeObject(vidi3);
+    }
+    
     
 }

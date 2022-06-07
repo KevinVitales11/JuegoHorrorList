@@ -1,9 +1,9 @@
 import greenfoot.*;  
 
-public class vida extends Actor
+public class Vida extends Actor
 {
 
-    public vida()
+    public Vida()
     {
         getImage().scale(getImage().getWidth()-15, getImage().getHeight()-15);
     }

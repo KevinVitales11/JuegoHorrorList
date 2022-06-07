@@ -1,6 +1,6 @@
 import greenfoot.*;  
 
-public class maceta extends Item
+public class Maceta extends Item
 {
 
 }

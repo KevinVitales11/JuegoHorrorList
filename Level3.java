@@ -5,17 +5,21 @@ public class Level3 extends World
 {
 
     public GreenfootImage []imagesBarraPuntos;
-    public int Score1;
-    public int Score2;
-    public int Score3;
+    public int score1;
+    public int score2;
+    
     Cuenta contadorT;
+    Libro librin;
 
-    public Level3()
+    public Level3(Libro librin)
     {    
 
         super(1100, 600, 1);
 
+       this.librin=librin ;       
         
+        score1=librin.score[0];
+        score2=librin.score[1];
         imagesBarraPuntos=new GreenfootImage[6];
         imagesBarraPuntos[4]=new GreenfootImage("images/b0.png");
 
@@ -35,21 +39,29 @@ public class Level3 extends World
 
     private void prepare()
     {
-        niño nini=new niño();
-        addObject(nini, 100,600);
-        libro librin=new libro();
+        
+        
+        
         librin.finEnd=true;
         librin.fin=true;
         addObject(librin,120 , 100);
-        vida vida = new vida();
+        librin.score[0]=score1;
+        librin.score[1]=score2;
+        librin.score[0]=score1;
+        
+        
+        
+        Vida vida = new Vida();
         addObject(vida,930,80);
-        vida vida2 = new vida();
+        Vida vida2 = new Vida();
         addObject(vida2,840,80);
-        vida vida3 = new vida();
+        Vida vida3 = new Vida();
+        Niño nini=new Niño(vida3,vida,vida2);
+        addObject(nini, 100,600);
         addObject(vida3,1000,80);
-        Fantasma fantasma=new Fantasma(nini,vida,vida2,vida3);
+        Fantasma fantasma=new Fantasma(nini);        
         addObject(fantasma,0,0);
-        Profe pro=new Profe(nini,vida,vida2,vida3);
+        Profe pro=new Profe(nini);
         addObject(pro, 0, 0);
         nini.setFantasma(fantasma);
         Points points=new Points();
@@ -57,19 +69,20 @@ public class Level3 extends World
         librin.setImagesBarr(imagesBarraPuntos);
         librin.setLocation(0,0);
         librin.setPoints(points);
-        maceta ma1=new maceta();
-        maceta ma2=new maceta();
-        maceta ma3=new maceta();
-        maceta ma4=new maceta();
-        maceta ma5=new maceta();
+        Maceta ma1=new Maceta();
+        Maceta ma2=new Maceta();
+        Maceta ma3=new Maceta();
+        Maceta ma4=new Maceta();
+        Maceta ma5=new Maceta();
         addObject(ma1, 500, 100);
         addObject(ma2, 300, 600);
         addObject(ma3, 400, 300);
         addObject(ma4, 100, 400);
         addObject(ma5, 350, 200);
-        librin.Score[0]=Score1;
-        librin.Score[1]=Score2;
-        librin.Score[2]=Score3;
+        librin.score[0]=score1;
+        librin.score[1]=score2;
+        fantasma.libri=librin;
+        pro.libri=librin;
         apareceLetrero("Parcial 3");
     }
     protected void apareceLetrero(String text)
@@ -77,20 +90,13 @@ public class Level3 extends World
         Letrero letrero= new Letrero(text);
         addObject(letrero, getWidth()/2+70,getHeight()-100);
     }
-    public void setScore1(int Score1)
-    {
-        this.Score1=Score1;
-    }
-    public void setScore2(int Score2)
-    {
-        this.Score2=Score2;
-    }
-    public void setScore3(int Score3)
-    {
-        this.Score3=Score3;
-    }
+    
     public void setContador(Cuenta cuenta)
     {
         this.contadorT=cuenta;
+    }
+    public void setLibro(Libro libri)
+    {
+        this.librin=libri;
     }
 }

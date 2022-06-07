@@ -5,7 +5,6 @@ public class Animation extends World
 
     MyWorld l;
     
-
     public Animation(MyWorld l)
     {    
 
@@ -20,4 +19,5 @@ public class Animation extends World
         Greenfoot.setWorld(l);
         Greenfoot.setSpeed(50);
     }
-}
+    
+    }

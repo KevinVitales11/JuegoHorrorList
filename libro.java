@@ -1,30 +1,37 @@
 import greenfoot.*;  
 
-public class libro extends Actor
+public class Libro extends Actor
 {
 
     private GreenfootImage []imagesLibro;
     private GreenfootImage []imagesBarr;
-    public int[] Score=new int[3];
+    public int[] score;
     Points points;
     private int cont=0;
     private int tiempo=110;
     private int puntos=0;
     private int cont2=1;
-    private cafe coffe;
     public boolean fin=false;
     public boolean finEnd=false;
-    niño nini;
+    Niño nini;
     private int time;
-    private int contadorTiempo=0;
+    public int contadorTiempo;
     Cuenta contadorT;
+
     
-    Record MundoRecord=new Record(Score);
-    public libro()
+    
+
+    
+    public Libro()
     {
         getImage().scale(30, 30);
         setLocation(800,800);
-        
+        score=new int[4];
+        score[0]=0;
+        score[1]=0;
+        score[2]=0;
+        score[3]=0;
+        contadorTiempo=0;
 
        
     }
@@ -32,10 +39,12 @@ public class libro extends Actor
     public void act()
     {
 
+        contadorTiempo++;
+        
         apareceteAleatoriamente();
         restar();
         aumentaPuntos();
-        contadorTiempo++;
+       
 
     }
 
@@ -54,19 +63,16 @@ public class libro extends Actor
         
     }
 
-    public void setNiño(niño nini)
+    public void setNiño(Niño nini)
     {
         this.nini=nini;
     }
 
-    public void setCoffe(cafe coffe)
-    {
-        this.coffe=coffe;
-    }
+    
 
     private void restar()
     {
-        if(isTouching(niño.class)==true)
+        if(isTouching(Niño.class)==true)
         {
 
             String m;
@@ -77,7 +83,7 @@ public class libro extends Actor
         }
     }
 
-    private void Win()
+    private void win()
     {
 
     
@@ -88,44 +94,42 @@ public class libro extends Actor
             if(finEnd==true)
             {
 
-                Score[2]=contadorTiempo/100;
-                win ganar=new win(Score);
-                ganar.Score1=Score[0];
-                ganar.Score2=Score[1];
-                ganar.Score3=Score[2];
+                score[2]=contadorTiempo/100;
                 
+                Win ganar=new Win(score);
                 Greenfoot.setWorld(ganar); 
-                getWorld().removeObjects(getWorld().getObjects(Music.class));
+                
             }else
             {
 
-                Level3 nivelFin=new Level3();
-                Score[1]=contadorTiempo/100;
-                nivelFin.Score1=Score[0];
-                nivelFin.Score2=Score[1];
-                nivelFin.Score3=Score[2];
-              
+                
+                score[1]=contadorTiempo/100;
+               
+                Level3 nivelFin=new Level3(this);
+                nivelFin.score1=score[0];
+                nivelFin.score2=score[1];
+                
                 Greenfoot.setWorld(nivelFin);
-                getWorld().removeObjects(getWorld().getObjects(Fantasma.class));
-                getWorld().removeObjects(getWorld().getObjects(niño.class));
-                getWorld().removeObjects(getWorld().getObjects(Points.class));
+             
+                
+                
                 
 
             }
         }else
         {
-            Level2 nivel=new Level2();
             
-
-            Score[0]=contadorTiempo/100;
-            nivel.Score1=Score[0];
-            nivel.Score2=Score[1];
-            nivel.Score3=Score[2];
+                Level2 nivel=new Level2(this);
+    
+                score[0]=contadorTiempo/100;
             
-            Greenfoot.setWorld(nivel);
-            getWorld().removeObjects(getWorld().getObjects(Fantasma.class));
-            getWorld().removeObjects(getWorld().getObjects(niño.class));
-            getWorld().removeObjects(getWorld().getObjects(Points.class));
+                nivel.setLibro(this);
+                nivel.score1=score[0];
+                Greenfoot.setWorld(nivel);
+                
+                
+            
+           
             
 
         }
@@ -148,7 +152,7 @@ public class libro extends Actor
             if(cont2==4)
             {
                 cont2=1;
-                Win();
+                win();
 
             }
         }
@@ -159,6 +163,8 @@ public class libro extends Actor
     {
         this.points=points;
     }
+    
+    
     
 
     

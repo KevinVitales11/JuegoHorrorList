@@ -1,10 +1,10 @@
 import greenfoot.*;  
 
-public class bancaBoy extends Item
+public class BancaBoy extends Item
 {
     GreenfootImage img;
 
-    bancaBoy()
+    BancaBoy()
     {
         img=getImage();
         img.scale(img.getWidth()-200+10, img.getHeight()-240);       
