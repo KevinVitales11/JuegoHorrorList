@@ -12,6 +12,9 @@ public class MyWorld extends World
     int tiempo=0;
     int score[];
     
+    public String nameUsu;
+
+    
 
     public MyWorld()
     {    
@@ -28,6 +31,7 @@ public class MyWorld extends World
         imagesBarraPuntos[2].scale(imagesBarraPuntos[2].getWidth()-200,imagesBarraPuntos[2].getHeight()-30);
         imagesBarraPuntos[3].scale(imagesBarraPuntos[3].getWidth()-200,imagesBarraPuntos[3].getHeight()-30);
         imagesBarraPuntos[4].scale(imagesBarraPuntos[4].getWidth()-200,imagesBarraPuntos[4].getHeight()-30);
+        
         prepare();
 
     }
@@ -42,6 +46,8 @@ public class MyWorld extends World
             Menu menu=new Menu(this);
             
             menu.setScore(score);
+            menu.nombre=nameUsu;
+            
             Greenfoot.setWorld(menu);
 
         }

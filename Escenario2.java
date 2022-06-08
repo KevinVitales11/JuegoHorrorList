@@ -2,12 +2,13 @@ import greenfoot.*;
 import greenfoot.GreenfootSound;
 import java.awt.Color;
 import java.lang.Object;
+import javax.swing.JOptionPane;
 
 public class Escenario2 extends World
 {
     Regresar regresar=new Regresar();
     GreenfootImage img= new GreenfootImage("images/fondoNegro.jpg");
-    int []score;
+    public int []score=new int[4];
     
     public Escenario2(int []score)
     {    
@@ -15,6 +16,7 @@ public class Escenario2 extends World
         
         super(1100, 600, 1); 
         this.score=score;
+        score[0]=score[0]+300;
         prepare();
 
     }
@@ -48,7 +50,7 @@ public class Escenario2 extends World
            MyWorld p =new MyWorld();
         
            p.score=score;
-           
+           p.nameUsu= JOptionPane.showInputDialog("¿Cual es tu nombre?");
            Greenfoot.setWorld(p);
        }
     }

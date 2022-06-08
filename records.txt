@@ -1,0 +1,12 @@
+ninguno,10000
+ninguno,100000
+ninguno,10000
+ninguno,10000
+ninguno,10000
+sebastian,720
+kevin,80
+ivan,75
+popo,300
+miriam,318
+itzel,351
+jorge,341

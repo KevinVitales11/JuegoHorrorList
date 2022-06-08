@@ -9,7 +9,8 @@ public class Menu extends World
     private int tiempo=200;
     private int cont=0;
     int Score[]=new int[4];
-    private String nombre;
+    public String nombre;
+    boolean ingres=true;
   
 
     public Menu(MyWorld l)
@@ -18,19 +19,21 @@ public class Menu extends World
         super(600, 400, 1); 
         prepare();
         this.l=l;
+        
 
     }
     public void act()
     {
 
         MouseInfo mouse = Greenfoot.getMouseInfo();
-        pideNombre();
+        
 
         if(Greenfoot.mouseClicked(records))
         {
-            Record record =new Record(Score);
+            Record record =new Record(Score,nombre,ingres);
             record.setMenu(this);
-            record.setNombre(nombre);
+            ingres=false;
+            
             Greenfoot.setWorld(record);
         }else if(Greenfoot.mouseClicked(botonPlay))
         {
@@ -71,12 +74,5 @@ public class Menu extends World
         this.Score=Score;
     }
 
-    private void pideNombre()
-    {
-        if(nombre==null)
-        {
-
-            nombre = JOptionPane.showInputDialog("¿Cual es tu nombre?");
-        }
-    }
+    
 }

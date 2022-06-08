@@ -1,4 +1,5 @@
 import greenfoot.*;  
+import javax.swing.JOptionPane;
 
 public class Win extends World
 {
@@ -34,6 +35,8 @@ public class Win extends World
            MyWorld p =new MyWorld();
         
            p.score=score;
+           p.nameUsu= JOptionPane.showInputDialog("¿Cual es tu nombre?");
+           
            
            Greenfoot.setWorld(p);
        }
